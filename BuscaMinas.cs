@@ -98,5 +98,5 @@ procedure IrAProximaCelda(dirPrinc, dirSec){
 }
  
 procedure test(){
-     
+     mierda()
 }
