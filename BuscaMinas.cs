@@ -1,8 +1,4 @@
 function contarMinas(){
-    ContarMinasAlrededor();
-} 
-
-function ContarMinasAlrededor(){
 /* 
 proposito: denota cantidad de minas que hay en las celdas alrededor de la actual.
 orecondicion: -
@@ -22,11 +18,11 @@ precondicion: -
     Mover(dir);
     contarMinas := 0;
     if (hayMina()){
-        contarminas := nroBolitas(Rojo);
+        contarminas := contarMinas + nroBolitas(Rojo);
     }
     if (hayMina()){
         Mover(siguente(dir));
-        contarminas := nroBolitas(Rojo);
+        contarminas := contarMinas + nroBolitas(Rojo);
     }
     RetornarOrigen(opuesto(siguiente(dir), opuesto(dir)));
     return (contarminas)
@@ -55,7 +51,48 @@ procedure PonerPista(){
 proposito: pone en la celda actual una pista por cantidad de minas que hay en las celdas alrededor
 precondicion: -
 */
-    repeat(ContarMinasAlrededor()){
-        Poner(Azul);
+    InicializarRecorrido(Norte, Este);
+    while (puedoMoverHacia(Norte, Este))
+    {
+        ProcesarPista();
+        IrAProximaCelda(Norte, Este);
+    }
+
+}
+
+procedure ProcesarPista(){
+    if(not hayMina()){
+        ColocarPista();
+    }
+}
+
+procedure ColocarPista(){
+    repeat(contarMinas()){
+        Poner(Azul)
+    }
+}
+
+function puedoMoverHacia(dirPrin, dirSec){
+    return (puedeMover(dirPrin) || puedeMover(dirSec))
+}
+
+procedure InicializarRecorrido(dirPrinc, dirSec){
+    IrBorde(dirPrinc});
+    IrBorde(dirSec});
+}
+
+procedure IrBorde(dir){
+    while(puedeMover(dir)){
+        Mover(dir);
+    }
+}
+
+procedure IrAProximaCelda(dirPrinc, dirSec){
+    if(puedeMover(dirPrin)){
+        Mover(dirPrin);
+    }
+    else{
+        Mover(dirSec)
+        IrBorde(opuesto(dirSec));
     }
 }
