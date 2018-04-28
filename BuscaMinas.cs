@@ -1,6 +1,6 @@
 function contarMinas(){
     ContarMinasAlrededor();
-}
+} 
 
 function ContarMinasAlrededor(){
 /* 
