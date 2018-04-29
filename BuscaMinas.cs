@@ -17,15 +17,19 @@ precondicion: -
 */
     Mover(dir);
     contarMinas := 0;
-    if (hayMina()){
-        contarminas := contarMinas + nroBolitas(Rojo);
-    }
-    if (hayMina()){
-        Mover(siguente(dir));
-        contarminas := contarMinas + nroBolitas(Rojo);
-    }
+    contarMinas := acumularMinas(contarMinas)
+    Mover(siguente(dir));
+    contarMinas := acumularMinas(contarMinas)
     RetornarOrigen(opuesto(siguiente(dir), opuesto(dir)));
     return (contarminas)
+}
+
+function acumularMinas(cantidadMinas){
+    acumuladorMinas := 0
+    if (hayMina()){
+        acumuladorMinas := cantidadMinas + nroBolitas(Rojo);
+    }
+    return (acumuladorMinas)
 }
 
 function hayMina(){
@@ -95,8 +99,4 @@ procedure IrAProximaCelda(dirPrinc, dirSec){
         Mover(dirSec)
         IrBorde(opuesto(dirSec));
     }
-}
- 
-procedure test(){
-     mierda()
 }
