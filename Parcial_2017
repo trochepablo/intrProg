@@ -22,3 +22,30 @@ function cantidadDePasosEntreMarcas(dir){
     return (cantidadPasos)
 }
 #endregion
+
+#region ejercicio3
+/*
+proposito: 
+*/
+function hayMarcaSinVisitarHacia(cantEnergia, dir){
+    return (cantidadDePasosEntreMarcas(dir) >= cantEnergia)
+}
+#endregion
+
+#region ejercicio4
+function hayMarcaSinVisitarEnEntorno(energia){
+    dir := mindDir();
+    while (dir != maxDir() && not hayMarcaSinVisitarHacia(energia, dir)){
+        dir := siguiente(dir);
+    }
+    return (hayMarcaSinVisitarHacia(energia, dir))
+}
+#endregion
+
+#region ejercicio5
+procedure AvanzarASiguienteMarca(dirMarca){
+    repeat(cantidadDePasosEntreMarcas(dirMarca)){
+        Mover(dirMarca);
+    }
+}
+#endregion
