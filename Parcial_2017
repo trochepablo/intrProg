@@ -1,0 +1,24 @@
+#region ejercicio1
+function esMarcaSinVisitar(){
+    /*
+    proposito: devuelve verdadero si la celda no fue visitada anteriormente
+    precondicion: -
+     */
+    return (not esCeldaVisitada())
+}
+#endregion
+
+#region ejercicio2
+/*
+proposito: cuentadenota la cantidad de pasos que debe dar el robot hasta la siguiente marca
+precondicion: hay una marca sin visitar en direccion dir
+*/
+function cantidadDePasosEntreMarcas(dir){
+    cantidadPasos := 0;
+    while(puedeMover(dir) && not hayMarca()){
+        cantidadPasos := cantidadPasos + 1;
+        Mover(dir);
+    }
+    return (cantidadPasos)
+}
+#endregion
