@@ -34,8 +34,7 @@ procedure ExplotarPiezaMarcada(){
 proposito: hace explotar la pieza que se encuentra marcada
 precondicion: -
 */
-    InicializarRecorrido(Norte, Este):
-    while (not hayCasilleroMarcado()){
+    while (not hayCasillerosMarcado()){
         BuscarCasilleroMarcado();
         MarcarCasillerosVecinos();
         ExplotarCasillero();
@@ -63,3 +62,37 @@ procedure AplicarGraverdad(){
     Mover(Sur);
     Poner(colorPiezaGravedad);
 }
+
+procedure AplicarGravedadAlTablero(){
+    InicializarRecorrido(Norte, Este);
+    while(pudeMoverProximaCelda(Norte, Este)){
+        AplicarFuerzaDeGravedadACasillero();
+        IrAProximaCelda(Norte, Este);
+    }
+}
+
+function pudeMoverProximaCelda(dirPrin, dirSec){
+    return (puedeMover(dirPrin) || puedeMover(dirSec))
+}
+
+procedure InicializarRecorrido(dirPrinc, dirSec){
+    IrBorde(dirPrinc});
+    IrBorde(dirSec});
+}
+
+procedure IrBorde(dir){
+    while(puedeMover(dir)){
+        Mover(dir);
+    }
+}
+
+procedure IrAProximaCelda(dirPrinc, dirSec){
+    if(puedeMover(dirPrin)){
+        Mover(dirPrin);
+    }
+    else{
+        Mover(dirSec)
+        IrBorde(opuesto(dirSec));
+    }
+}
+ 
