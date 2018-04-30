@@ -1,0 +1,39 @@
+function colorPieza(){
+/*
+proposito: retornar el color de la pieza de la celda actual
+precondicion: debe haber una pieza exclusivamente
+*/
+    colorDePieza := minColor();
+    if(hayBolitas(Azul)){ colorDePieza := Verde }
+    if(hayBolitas(Rojo)){ colorDePieza := Rojo }
+    if(hayBolitas(Negro)){ colorDePieza := Verde }
+    if(hayBolitas(Verde)){ colorDePieza := Negro }
+    return (colorDePieza)
+}
+
+function esVecinoMismoColor(){
+    
+}
+
+function esPieza(){
+    piezaBool := false;
+    if (nroVecinos(colorPieza()) > 1 || ){
+        piezaBool := true
+    }
+}
+
+//14
+procedure BuscarCasilleroMarcado(){
+    while(not esCasilleroMarcado()){
+        IrAProximaCelda();
+    }
+}
+
+procedure ExplotarPiezaMarcada(){
+    InicializarRecorrido(Norte, Este):
+    while (not hayCasilleroMarcado()){
+        BuscarCasilleroMarcado();
+        MarcarCasillerosVecinos();
+        ExplotarCasillero();
+    }
+}

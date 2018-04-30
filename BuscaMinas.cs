@@ -100,3 +100,4 @@ procedure IrAProximaCelda(dirPrinc, dirSec){
         IrBorde(opuesto(dirSec));
     }
 }
+ 
