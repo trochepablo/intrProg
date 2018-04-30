@@ -30,10 +30,36 @@ procedure BuscarCasilleroMarcado(){
 }
 
 procedure ExplotarPiezaMarcada(){
+/*
+proposito: hace explotar la pieza que se encuentra marcada
+precondicion: -
+*/
     InicializarRecorrido(Norte, Este):
     while (not hayCasilleroMarcado()){
         BuscarCasilleroMarcado();
         MarcarCasillerosVecinos();
         ExplotarCasillero();
     }
+}
+
+procedure AplicarFuerzaDeGravedadACasillero(){
+    while(esVaciaProximoCasillero()){
+        AplicarGraverdad();
+    }
+}
+
+function esVaciaProximoCasillero(){
+    Mover(Sur);
+    return (not hayBolitas(Verde) && not hayBolitas(Rojo) && not hayBolitas(Negro) && not hayBolitas(Azul))
+}
+
+procedure AplicarGraverdad(){
+    /*
+    proposito: desplaza la pieza una celda al sur de la posicion actual
+    precondicion: debe haber una pieza
+    */
+    colorPiezaGravedad := colorPieza();
+    Sacar(colorPiezaGravedad);
+    Mover(Sur);
+    Poner(colorPiezaGravedad);
 }
