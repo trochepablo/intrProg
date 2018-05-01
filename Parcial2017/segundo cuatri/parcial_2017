@@ -41,17 +41,27 @@ function marcado(colorEquipo){
 #endregion
 
 #region ejercicio3
-/*
-
- */
  function hayPase(dir, colorEquipo){
+     /*
+     proposito: denota verdadero si hay un jugador del equipor colorEquipo en direccion dir sin ningun adversario de por medio.
+     */
     hayPaseBool := false;
     while(puedeMover(dir) && not hayRivalHacia(dir, colorEquipo)){
-        if(hayJugadorEquipo(colorEquipo)){
-            hayPaseBool := true;
-        }
+        hayPaseBool := elseIf(hayJugadorEquipo(colorEquipo), true, false)
         Mover(dir);
     }
-    return (hayPaseBool )
+    return (hayPaseBool)
+ }
+
+ function elseIf(boleano, param1, param2){
+     /*
+     proposito: denota param1 si boleano es igual a true.
+     precondicion: los parametros 1 y 2 deben ser del mismo tipo y el parametro boleano debe ser de tipo bool
+      */
+     argumento := param2;
+     if(boleano){
+         argumento := param1;
+     }
+     return (argumento)
  }
 #endregion
