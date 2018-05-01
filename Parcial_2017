@@ -28,7 +28,7 @@ function cantidadDePasosEntreMarcas(dir){
 proposito: 
 */
 function hayMarcaSinVisitarHacia(cantEnergia, dir){
-    return (cantidadDePasosEntreMarcas(dir) >= cantEnergia)
+    return (cantidadDePasosEntreMarcas(dir) >= cantEnergia && esMarcaSinVisitar())
 }
 #endregion
 
@@ -47,5 +47,26 @@ procedure AvanzarASiguienteMarca(dirMarca){
     repeat(cantidadDePasosEntreMarcas(dirMarca)){
         Mover(dirMarca);
     }
+}
+#endregion
+
+#region ejercicio6
+function escapeExitoso(energiaDisponible){
+    energiaRestante := energiaDisponible;
+    while(not esSalida()){
+        dirMarca := direccionMarcaSinVisitarEnEntorno(energiaRestante);
+        energiaRestante :=  energiaRestante - cantidadDePasosEntreMarcas(dirMarca);
+        AvanzarASiguienteMarca(dirMarca);
+    }
+    return (energiaDisponible >= energiaRestante)
+}
+
+function direccionMarcaSinVisitarEnEntorno(energia){
+/*proposito: retorna la direccion hacia la cual hay marca sin visitar */
+    dir := mindDir();
+    while (dir != maxDir() && not hayMarcaSinVisitarHacia(energia, dir)){
+        dir := siguiente(dir);
+    }
+    return (dir)
 }
 #endregion
