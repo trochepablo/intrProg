@@ -76,7 +76,7 @@ function escapeExitoso(energiaDisponible){
 }
 
 function direccionMarcaSinVisitarEnEntorno(energia){
-/*proposito: retorna la direccion hacia la cual hay marca sin visitar */
+/*proposito: retorna la direccion hacia la cual hay marca sin visitar, siempre y cuando alcance la energia */
     dir := mindDir();
     while (dir != maxDir() && not hayMarcaSinVisitarHacia(energia, dir)){
         dir := siguiente(dir);
