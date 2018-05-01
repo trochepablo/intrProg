@@ -102,7 +102,7 @@ procedure InicializarRecorrdio(dirPrincipal, dirSecundaria){
     IrABorde(opuesto(dirPrincipal));
     IrABorde(opuesto(dirSecundaria));
 }
-
+ 
 function puedeMoverHacia(dirPrincipal, dirSecundaria){
     return (puedeMover(dirPrincipal) || puedeMover(dirSecundaria))
 }
@@ -137,7 +137,7 @@ procedure colocarBaterias(){
 
 procedure RetornarOrigen(dir){
     /*
-    proposito: mueve el cabezal dos posiciones en retorno al momento de partida
+    proposito: mueve el cabezal dos posiciones en retorno a la celda de partida
      */
     Mover(opuesto(siguente(dir)));
     Mover(opuesto(dir));
@@ -145,7 +145,7 @@ procedure RetornarOrigen(dir){
 
 procedure MoverAdyacente(dir){
     /*
-    proposito: pone el cabezal en celda diagonal al momento de partida
+    proposito: pone el cabezal en celda diagonal a la celda de partida
      */
     Mover(siguente(dir);)
 }
