@@ -25,7 +25,9 @@ function cantidadDePasosEntreMarcas(dir){
 
 #region ejercicio3
 /*
-proposito: denota verdadero si ha
+proposito: denota verdadero si la cantidad de energia es suficiente para realizar los pasos del robot
+y si la celda actual no fue visitada anteriormente
+precondicion: -
 */
 function hayMarcaSinVisitarHacia(cantEnergia, dir){
     return (cantidadDePasosEntreMarcas(dir) <= cantEnergia && esMarcaSinVisitar())
@@ -33,6 +35,10 @@ function hayMarcaSinVisitarHacia(cantEnergia, dir){
 #endregion
 
 #region ejercicio4
+/*
+    proposito: denota true si la direccion y la energia son suficientes.
+    precondicion: no hay
+*/
 function hayMarcaSinVisitarEnEntorno(energia){
     dir := mindDir();
     while (dir != maxDir() && not hayMarcaSinVisitarHacia(energia, dir)){
@@ -43,6 +49,10 @@ function hayMarcaSinVisitarEnEntorno(energia){
 #endregion
 
 #region ejercicio5
+/*
+proposito: mueve el cabezal cantidad de pasos haya entre 2 marcas
+-precondicion: debe poder mover hacia la direccion
+*/
 procedure AvanzarASiguienteMarca(dirMarca){
     repeat(cantidadDePasosEntreMarcas(dirMarca)){
         Mover(dirMarca);
@@ -51,6 +61,10 @@ procedure AvanzarASiguienteMarca(dirMarca){
 #endregion
 
 #region ejercicio6
+/*
+    proposito: denota verdadero si el robot puede alcanzar la salida con la energia suficiente.
+    precondicion: debe haber marcas a seguir y una salida
+*/
 function escapeExitoso(energiaDisponible){
     energiaRestante := energiaDisponible;
     while(not esSalida()){
@@ -74,7 +88,7 @@ function direccionMarcaSinVisitarEnEntorno(energia){
 #region ejercicio7
 procedure completarRecargas(){
 /*
-proposito: coloca una bateria alrededor de la celda a actual, exactamente aun rango de 1 celda de distancia si la celda esta vacia.
+proposito: coloca las baterias necesitas en lugares vacios alrededor de una bateria.
 precondicion: -
 */
     InicializarRecorrdio(Norte, Este);
@@ -85,6 +99,9 @@ precondicion: -
 }
 
 procedure colocarBaterias(){
+    /*
+    proposito: coloca una bateria alrededor de la celda actual, exactamente aun rango de 1 celda de distancia si la celda esta vacia.
+     */
     foreach direccion in [dirMin()..dirMax()]{
         Mover(direccion);
         SiEsVaciaPonerBateria();
@@ -95,21 +112,33 @@ procedure colocarBaterias(){
 }
 
 procedure RetornarOrigen(dir){
+    /*
+    proposito: mueve el cabezal dos posiciones en retorno al momento de partida
+     */
     Mover(opuesto(siguente(dir)));
     Mover(opuesto(dir));
 }
 
 procedure MoverAdyacente(dir){
+    /*
+    proposito: pone el cabezal en celda diagonal al momento de partida
+     */
     Mover(siguente(dir);)
 }
 
 procedure SiEsVaciaPonerBateria(){
+    /*
+    proposito: pone una bateria si la celda esta vacia
+     */
         if(esVacia()){
             Poner(Azul);
         }
 }
 
 function esVacia(){
+    /*
+    proposito: retorna verdadero si la celda actual no contiene ninguna bolita de color.
+     */
     return (not hayBolitas(Verde) && not hayBolitas(Rojo) && not hayBolitas(Negro) && not hayBolitas(Azul))
 }
 #endregion
