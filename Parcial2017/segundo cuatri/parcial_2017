@@ -65,3 +65,31 @@ function marcado(colorEquipo){
      return (argumento)
  }
 #endregion
+
+#region ejercicio4
+/*
+
+ */
+function mejorDirParaPase(colorEquipo){
+    dirMejorPase := minDir();
+    maxPase := 0;
+    foreach dir [dirMin()..maxDir()]{
+        if(hayPase(dir, colorEquipo) && maxPase < queTanBuenoEsElPase(dir, colorEquipo)){
+            maxPase := queTanBuenoEsElPase(dir, colorEquipo);
+            dirMejorPase := dir;
+        }
+    }
+    return (dirMejorPase)
+}
+
+function queTanBuenoEsElPase(dir, colorEquipo){
+    contarPasos := 0;
+    while(not hayJugadorEquipo(colorEquipo)){
+        contarPasos := contarPasos + 1;
+    }
+    if(jugardorEstaUsado()){
+        contarPasos := 0;
+    }
+    return (contarPasos)
+}
+#endregion
