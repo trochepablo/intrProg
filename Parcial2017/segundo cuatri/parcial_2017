@@ -93,3 +93,27 @@ function queTanBuenoEsElPase(dir, colorEquipo){
     return (contarPasos)
 }
 #endregion
+
+#region ejercicio5
+function puedeMeterGol(colorEquipo){
+    while(hayPase(colorEquipo) && not hayGol(colorEquipo)){
+        RealizarPase(mejorDirParaPase(colorEquipo));
+    }
+    return (hayGol(colorEquipo))
+}
+
+function cantidadPasosPase(dir, colorEquipo){
+    cantidadPasos := 0;
+    while(not hayJugadorEquipo(colorEquipo)){
+        cantidadPasos := cantidadPasos + 1;
+        Mover(dir);
+    }
+    return (cantidadPasos)
+}
+
+procedure RealizarPase(dir){
+    repeat(cantidadPasosPase(mejorDirParaPase(colorEquipo), colorEquipo)){
+        Mover(dir);
+    }
+}
+#endregion
