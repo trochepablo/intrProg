@@ -1,0 +1,20 @@
+function esMarcadoHacia(dir, colorEquipo){
+    /*
+    proposito: retorna verdadero si hay un rival en alguna de las celdas lindantes a la actual.
+    precondicion: el cabezal debe estar situado en una celda con un jugador de colorEquipoLocal
+     */
+    dirPrimaria := minDir();
+    while(dirPrimaria != maxDir() && not hayRivalHacia(dirPrimaria)){
+        dirPrimaria := siguiente(dirPrimaria);
+    }
+    return hayRivalHacia(dirPrimaria)
+}
+
+functio hayRivalHacia(dir){
+    /*
+    proposito: retorna verdadero si hay un rival en la celda en direccion dir
+    precondicion: debe poder mover el cabezal hacia dir
+     */
+    Mover(dir);
+    return (hayBolitas(colorEquipoVisitante()))
+}

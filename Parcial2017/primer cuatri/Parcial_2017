@@ -1,7 +1,7 @@
 #region ejercicio1
 function esMarcaSinVisitar(){
     /*
-    proposito: devuelve verdadero si la celda no fue visitada anteriormente
+    proposito: devuelve verdadero si la celda actual no fue visitada anteriormente
     precondicion: -
      */
     return (not esCeldaVisitada())
