@@ -25,10 +25,10 @@ function cantidadDePasosEntreMarcas(dir){
 
 #region ejercicio3
 /*
-proposito: 
+proposito: denota verdadero si ha
 */
 function hayMarcaSinVisitarHacia(cantEnergia, dir){
-    return (cantidadDePasosEntreMarcas(dir) >= cantEnergia && esMarcaSinVisitar())
+    return (cantidadDePasosEntreMarcas(dir) <= cantEnergia && esMarcaSinVisitar())
 }
 #endregion
 
