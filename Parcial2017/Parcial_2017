@@ -98,6 +98,30 @@ precondicion: -
     }
 }
 
+procedure InicializarRecorrdio(dirPrincipal, dirSecundaria){
+    IrABorde(opuesto(dirPrincipal));
+    IrABorde(opuesto(dirSecundaria));
+}
+
+function puedeMoverHacia(dirPrincipal, dirSecundaria){
+    return (puedeMover(dirPrincipal) || puedeMover(dirSecundaria))
+}
+
+procedure IrAProximaCelda(dirPrincipal, dirSecundaria){
+    if(puedeMover(dirPrincipal)){
+        Mover(dirPrincipal);
+    }
+    else{
+        Mover(dirSecundaria);
+        IrABorde(opuesto(dirPrincipal));
+    }
+}
+
+procedur IrABorde(dir){
+    while(puedeMover(dir)){
+        Mover(dir);
+    }
+}
 procedure colocarBaterias(){
     /*
     proposito: coloca una bateria alrededor de la celda actual, exactamente aun rango de 1 celda de distancia si la celda esta vacia.
