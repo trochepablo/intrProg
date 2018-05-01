@@ -95,6 +95,9 @@ function queTanBuenoEsElPase(dir, colorEquipo){
 #endregion
 
 #region ejercicio5
+/*
+proposito
+*/
 function puedeMeterGol(colorEquipo){
     while(hayPase(colorEquipo) && not hayGol(colorEquipo)){
         RealizarPase(mejorDirParaPase(colorEquipo));
@@ -103,6 +106,9 @@ function puedeMeterGol(colorEquipo){
 }
 
 function cantidadPasosPase(dir, colorEquipo){
+    /*
+    proposito: denota la cantidad de pasos que hay en direccion dir hasta el proximo jugado de colorEquipo
+    */
     cantidadPasos := 0;
     while(not hayJugadorEquipo(colorEquipo)){
         cantidadPasos := cantidadPasos + 1;
@@ -112,6 +118,9 @@ function cantidadPasosPase(dir, colorEquipo){
 }
 
 procedure RealizarPase(dir){
+    /*
+    proposito: mueve la pelota hacia direccion dir cantidad de veces cantidadPasosPase
+    */
     repeat(cantidadPasosPase(mejorDirParaPase(colorEquipo), colorEquipo)){
         Mover(dir);
     }
