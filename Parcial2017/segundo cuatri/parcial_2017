@@ -126,3 +126,40 @@ procedure RealizarPase(dir){
     }
 }
 #endregion
+
+#region ejercicio 6
+procedure PararJugadorParaConvertir(colorEquipo){
+    InicializarRecorrido(Norte, Este);
+    while(puedoMoverProximaCelda(Norte, Este) && not hayGol(colorEquipo)){
+        IrAProximaCelda(Norte, Este);
+    }
+    if(hayGol(colorEquipo)){
+        colocarJugador(colorEquipo);
+    }
+}
+#endregion
+
+#region ejercicio7
+function equipoMasSucio()
+{
+    cantJugadoresLocales := 0;
+    cantJugadoresVisitantes := 0;
+    colorMasSucio := colorVisitante();
+    InicializarRecorrido(Norte, Este);
+    while(puedoMoverProximaCelda(Norte, Este)){
+        if(hayBolitas(colorLocal())){
+            cantJugadoresLocales := cantJugadoresLocales + 1;
+        }
+        if(hayBolitas(colorLocal())){
+            cantJugadoresVisitantes := cantJugadoresVisitantes + 1;
+        }
+        IrAProximaCelda(Norte, Este);
+    }
+    if(cantJugadoresLocales > cantJugadoresVisitantes){
+        colorMasSucio := colorLocal();
+    }
+    return (colorMasSucio)
+}
+
+
+#endregion
