@@ -166,3 +166,11 @@ function esVacia(){
     return (not hayBolitas(Verde) && not hayBolitas(Rojo) && not hayBolitas(Negro) && not hayBolitas(Azul))
 }
 #endregion
+
+procedure PonerNCantidad(cantidad, unColor, dir){
+    Mover(dir)
+    repeat(cantidad){
+
+        Poner(unColor);
+    }
+}
