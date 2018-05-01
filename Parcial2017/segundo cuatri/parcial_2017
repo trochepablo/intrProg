@@ -5,14 +5,6 @@ function estaMarcadoHacia(dir, colorEquipo){
     proposito: retorna verdadero si hay un rival de colorEquipo en la celda en direccion dir.
     precondicion: el cabezal debe estar situado en una celda con un jugador de colorEquipo
      */
-    return (hayRivalHacia(dirPrimaria, colorEquipo))
-}
-
-function hayRivalHacia(dir, colorEquipo){
-    /*
-    proposito: retorna verdadero si hay un rival en la celda en direccion dir
-    precondicion: debe poder mover el cabezal hacia dir
-     */
     Mover(dir);
     return (hayBolitas(colorRival(colorEquipo)))
 }
@@ -46,4 +38,20 @@ function marcado(colorEquipo){
     }
     return (hayRivalHacia(dirPrimaria, colorEquipo))
 }
+#endregion
+
+#region ejercicio3
+/*
+
+ */
+ function hayPase(dir, colorEquipo){
+    hayPaseBool := false;
+    while(puedeMover(dir) && not hayRivalHacia(dir, colorEquipo)){
+        if(hayJugadorEquipo(colorEquipo)){
+            hayPaseBool := true;
+        }
+        Mover(dir);
+    }
+    return (hayPaseBool )
+ }
 #endregion
