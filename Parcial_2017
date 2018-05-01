@@ -70,3 +70,46 @@ function direccionMarcaSinVisitarEnEntorno(energia){
     return (dir)
 }
 #endregion
+
+#region ejercicio7
+procedure completarRecargas(){
+/*
+proposito: coloca una bateria alrededor de la celda a actual, exactamente aun rango de 1 celda de distancia si la celda esta vacia.
+precondicion: -
+*/
+    InicializarRecorrdio(Norte, Este);
+    while(puedoMoverHacia(Norte, Este)){
+        colocarBaterias();
+        IrAProximaCelda();
+    }
+}
+
+procedure colocarBaterias(){
+    foreach direccion in [dirMin()..dirMax()]{
+        Mover(direccion);
+        SiEsVaciaPonerBateria();
+        MoverAdyacente(direccion);
+        SiEsVaciaPonerBateria();
+        RetornarOrigen(direccion);
+    }
+}
+
+procedure RetornarOrigen(dir){
+    Mover(opuesto(siguente(dir)));
+    Mover(opuesto(dir));
+}
+
+procedure MoverAdyacente(dir){
+    Mover(siguente(dir);)
+}
+
+procedure SiEsVaciaPonerBateria(){
+        if(esVacia()){
+            Poner(Azul);
+        }
+}
+
+function esVacia(){
+    return (not hayBolitas(Verde) && not hayBolitas(Rojo) && not hayBolitas(Negro) && not hayBolitas(Azul))
+}
+#endregion
