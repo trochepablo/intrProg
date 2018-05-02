@@ -155,7 +155,7 @@ function equipoMasSucio()
         }
         IrAProximaCelda(Norte, Este);
     }
-    if(cantJugadoresLocales > cantJugadoresVisitantes){
+    if(cantJugadoresLocales < cantJugadoresVisitantes){
         colorMasSucio := colorLocal();
     }
     return (colorMasSucio)
