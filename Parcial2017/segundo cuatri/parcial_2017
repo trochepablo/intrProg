@@ -36,7 +36,7 @@ function marcado(colorEquipo){
     while(dirPrimaria != maxDir() && not estaMarcadoHacia(dirPrimaria, colorEquipo)){
         dirPrimaria := siguiente(dirPrimaria);
     }
-    return (hayRivalHacia(dirPrimaria, colorEquipo))
+    return (estaMarcadoHacia(dirPrimaria, colorEquipo))
 }
 #endregion
 
@@ -46,8 +46,8 @@ function marcado(colorEquipo){
      proposito: denota verdadero si hay un jugador del equipor colorEquipo en direccion dir sin ningun adversario de por medio.
      */
     hayPaseBool := false;
-    while(puedeMover(dir) && not hayRivalHacia(dir, colorEquipo)){
-        hayPaseBool := elseIf(hayJugadorEquipo(colorEquipo), true, false)
+    while(puedeMover(dir) && not estaMarcadoHacia(dir, colorEquipo)){
+        hayPaseBool := (elseIf(hayJugadorEquipo(colorEquipo), true, false) && not jugardorEstaUsado(colorEquipo));
         Mover(dir);
     }
     return (hayPaseBool)
@@ -69,7 +69,7 @@ function marcado(colorEquipo){
 #region ejercicio4
 /*
 
- */
+*/
 function mejorDirParaPase(colorEquipo){
     dirMejorPase := minDir();
     maxPase := 0;
