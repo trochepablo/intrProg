@@ -1,0 +1,43 @@
+type Cliente is record
+{
+	field horaIngresoCola # n mero
+	field cantProductos # n mero
+}
+type Caja is record
+{
+	field numero # n mero
+	field clientesEsperando # Lista de Cliente
+}
+type Super is record
+{
+	field horaActual # n mero
+	field lineaDeCajas # Lista de Caja
+	field clientesComprando # Lista de Cliente
+}
+
+
+//5.8
+function avanzaCaja(lineaDeCajas, nroCaja){
+	return(ifElse(longitud(clientesEsperando(buscarPorNroCaja(lineaDeCajas, nroCaja))) > 0, procesarProductoCliente(lineaDeCajas, nroCaja), lineaDeCajas))
+}
+
+function procesarProductoCliente(lineaDeCajas, nroCaja){
+	return (ifElse(cantidadDeProductos(obtenerPrimerClienteCaja(lineaDeCaja, nroCaja))) > 0, disminuirProducto(lineaDeCaja, nroCaja), eliminarCliente(lineaDeCaja, nroCaja)))
+}
+
+function obtenerPrimerClienteCaja(lineaDeCajas, nroCaja){
+	return(head(clientesEsperando(buscarPorNroCaja(lineaDeCajas, nroCaja))))
+}
+
+function disminuirProducto(lineaDeCajas, nroCaja){
+	return (Caja(lineaDeCajas | clientesEsperando <- editarCliente(buscarPorNroCaja(lineaDeCajas, nroCaja)))))
+}
+
+function editarCliente(caja){	
+	listaAux := clientesEsperando(caja);
+	listaClientesAux := [Cliente(head(clientesEsperando(caja)) | cantidadProductos <- cantidadProductos(head(clientesEsperando(caja))) - 1)];
+	foreach cliente in tail(listaAux){
+		listaClienteAux := listaClienteAux ++ [cliente]
+	}
+	return(listaClientesAux)
+}
